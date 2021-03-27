@@ -4,7 +4,6 @@ LABEL org.label-schema.license="LGPL-3.0" \
       org.label-schema.vcs-url="https://github.com/iambaim/bioticexplorer-docker" \
       org.label-schema.vendor="Institute of Marine Research, Norway"
 
-ENV DB_PATH=/data/IMR_db.duckdb
 ENV IDX_PATH=/data/dbIndex.rda
 
 RUN  apt-get update \
@@ -19,4 +18,6 @@ RUN  apt-get update \
   && apt-get -y --purge autoremove git zlib1g-dev libxml2-dev libudunits2-dev libgdal-dev libfontconfig1-dev libgit2-dev build-essential gfortran make g++ \
   && rm -rf /var/lib/apt/lists/*
 
-CMD Rscript --vanilla -e "shiny::runApp(\"/BioticExplorer\", port=8080)"
+EXPOSE 8080
+
+CMD Rscript --vanilla -e "shiny::runApp(\"/BioticExplorer\", host=\"::\", port=8080)"
