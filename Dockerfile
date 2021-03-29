@@ -5,7 +5,7 @@ LABEL org.label-schema.license="LGPL-3.0" \
       org.label-schema.vendor="Institute of Marine Research, Norway"
 
 ## Set user to docker
-RUN useradd docker \
+RUN useradd -u 5000 docker \
 	&& mkdir /home/docker \
 	&& chown docker:docker /home/docker \
 	&& addgroup docker staff
