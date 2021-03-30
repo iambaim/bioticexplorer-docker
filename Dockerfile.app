@@ -20,4 +20,6 @@ RUN  apt-get update \
 
 EXPOSE 8080
 
+USER 5000
+
 CMD Rscript --vanilla -e "shiny::runApp(\"/BioticExplorer\", host=\"::\", port=8080)"
