@@ -38,8 +38,8 @@ services:
     volumes:
       - bio_db_data:/data
       - bio_db_data:/var/monetdb5/dbfarm
-    expose:
-      - 50000
+    ports:
+      - 50000:50000
 
 
 volumes:
