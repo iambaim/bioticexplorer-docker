@@ -15,7 +15,7 @@ services:
   bioticexplorer:
     image: iambaim/bioticexplorer:latest
     restart: always
-    links:
+    depends_on:
       - dbserver
     volumes:
       - bio_db_data:/data
@@ -25,6 +25,8 @@ services:
   notebook:
     image: jupyter/r-notebook:latest
     restart: always
+    depends_on:
+      - dbserver
     volumes:
       - ./conf/jupyter_notebook_config.py:/etc/jupyter/jupyter_notebook_config.py
       - jupyter_data:/home/jovyan/work
@@ -38,6 +40,8 @@ services:
     volumes:
       - bio_db_data:/data
       - bio_db_data:/var/monetdb5/dbfarm
+    expose:
+      - 50000
     ports:
       - 50000:50000
 
