@@ -45,6 +45,7 @@ jobs:
         with:
           draft: false
           prerelease: false
+          tag_name: bioticexplorer-docker-${{ env.GIT_SHA }}
           release_name: BioticExplorer Docker-${{ env.GIT_SHA }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
