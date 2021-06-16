@@ -19,7 +19,7 @@ RUN apt-get update \
  # Database processor
  && git clone https://github.com/MikkoVihtakari/BioticExplorerServer.git /BioticExplorerServer \
  && cd /BioticExplorerServer \
- && Rscript --vanilla  -e "install.packages(\"remotes\"); remotes::install_deps(); remotes::install_local()" \
+ && Rscript --vanilla  -e "options(repos=\"https://cloud.r-project.org/\"); install.packages(\"remotes\"); remotes::install_deps(); remotes::install_local()" \
  && apt-get remove --purge -y git build-essential libxml2-dev libudunits2-dev libssl-dev libfontconfig1-dev libfreetype6-dev libxslt1-dev libgdal-dev \
  && apt-get autoremove --purge -y \
  && apt-get clean autoclean -y \
