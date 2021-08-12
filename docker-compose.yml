@@ -19,6 +19,9 @@ services:
       - dbserver
     volumes:
       - bio_db_data:/data
+    environment:
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
     expose:
       - 8080
 
