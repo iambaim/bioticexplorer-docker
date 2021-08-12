@@ -1,1 +1,1 @@
-32 19 * * * export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock && export PATH=/home/a5414/local/bin:$PATH && export COMPOSE_PROJECT_NAME=bio-explorer-docker && export COMPOSE_INTERACTIVE_NO_CLI=1 && cd /home/a5414/GIT/bioticexplorer-docker && ./script/db-update.sh > ~/bio.log 2>&1
+0 2 * * * export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock && export PATH=/home/${USER}/local/bin:$PATH && export COMPOSE_PROJECT_NAME=bio-explorer-docker && export COMPOSE_INTERACTIVE_NO_CLI=1 && cd /home/${USER}/GIT/bioticexplorer-docker && ./script/db-update.sh > ~/bio.log 2>&1
