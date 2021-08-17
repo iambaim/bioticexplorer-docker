@@ -11,7 +11,7 @@ ENV TZ=Europe/Oslo
 
 RUN apt-get update \
  && apt-get install -y git build-essential libxml2-dev libudunits2-dev libssl-dev libfontconfig1-dev libfreetype6-dev libuv1-dev libxslt1-dev libgdal-dev \
- && apt-get install -y libopenblas-base libxml2 libudunits2-0 fontconfig file diffutils libfontconfig1 libfreetype6 libssl1.1 libgdal28 libxslt1.1 r-base \
+ && apt-get install -y vim libopenblas-base libxml2 libudunits2-0 fontconfig file diffutils libfontconfig1 libfreetype6 libssl1.1 libgdal28 libxslt1.1 r-base \
  # Frontend
  && git clone https://github.com/MikkoVihtakari/BioticExplorer.git /BioticExplorer \
  && cd /BioticExplorer \
