@@ -15,7 +15,7 @@ RUN apt-get update \
  # Frontend
  && git clone https://github.com/MikkoVihtakari/BioticExplorer.git /BioticExplorer \
  && cd /BioticExplorer \
- && Rscript --vanilla  -e "options(repos=\"https://cloud.r-project.org/\"); install.packages(\"RstoxData\", repos = c(\"https://stoxproject.github.io/repo/\", \"https://cloud.r-project.org/\")); source(\"/BioticExplorer/R/install_requirements.R\")" \
+ && Rscript --vanilla  -e "options(repos=\"https://cloud.r-project.org/\"); source(\"/BioticExplorer/R/install_requirements.R\")" \
  # Database processor
  && git clone https://github.com/MikkoVihtakari/BioticExplorerServer.git /BioticExplorerServer \
  && cd /BioticExplorerServer \
