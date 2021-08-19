@@ -25,13 +25,20 @@ Assuming that you can only use rootless Docker and that Docker is installed on t
    ```
 
 ## 1. Install Docker Compose
-1. Run the installation command:
+1. Prepare your local environment:
+   ```bash
+   echo 'export PATH=$HOME/local/bin:$PATH' >> $HOME/.bash_profile
+   echo 'export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock' >> $HOME/.bash_profile
+   source $HOME/.bash_profile
+   ```
+   Note that the you only need to do the `source...` command once. The `.bash_profile` content will be executed on every user login.
+2. Run the installation command:
    ```bash
    curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o ~/local/bin/docker-compose
    chmod +x ~/local/bin/docker-compose
    ```
    Note that newer version might be available. You can check it here: https://docs.docker.com/compose/install/
-2. Check if Docker Compose is properly installed using this command: 
+3. Check if Docker Compose is properly installed using this command:
    ```bash
    docker-compose version
    ```
@@ -81,7 +88,7 @@ Assuming that you can only use rootless Docker and that Docker is installed on t
 
 3. To edit the live bioticexplorer server, use this command: 
    ```bash
-   docker-compose run -u root bioticexplorer bash
+   docker-compose exec -u root bioticexplorer bash
    ```
    After that you can go to `/BioticExplorer` directory and edit the files using `vim`. Use this in combination with the live logs to pinpoint any of the server errors.
 
