@@ -26,7 +26,7 @@ services:
       - 8080
 
   rstudio:
-    image: rocker/rstudio:latest
+    image: rocker/geospatial:latest
     restart: always
     depends_on:
       - dbserver
