@@ -25,6 +25,18 @@ services:
     expose:
       - 8080
 
+  rstudio:
+    image: rocker/rstudio:latest
+    restart: always
+    depends_on:
+      - dbserver
+    environment:
+      - DISABLE_AUTH=true
+    volumes:
+      - work_data:/home/rstudio/work
+    expose:
+      - 8787
+
   notebook:
     image: jupyter/r-notebook:latest
     restart: always
@@ -32,7 +44,7 @@ services:
       - dbserver
     volumes:
       - ./conf/jupyter_notebook_config.py:/etc/jupyter/jupyter_notebook_config.py
-      - jupyter_data:/home/jovyan/work
+      - work_data:/home/jovyan/work
     expose:
       - 8888
     command: start.sh jupyter lab --LabApp.token=''
@@ -48,8 +60,6 @@ services:
     ports:
       - 50000:50000
 
-
 volumes:
     bio_db_data:
-
-    jupyter_data:
+    work_data:
