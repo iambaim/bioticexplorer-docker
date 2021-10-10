@@ -122,3 +122,27 @@ Assuming that you can only use rootless Docker and that Docker is installed on t
    ```
    After that you can go to `/BioticExplorer` directory and edit the files using `vim`. Use this in combination with the live logs to pinpoint any of the server errors.
 
+4. Sometimes the locally stored Docker image can get corrupted. Usually you'll getting this error: `...user XXXX not found...` in `docker-compose logs` and/or that `docker-compose ps` shows that
+a service is getting restarted all the time. The possible fix is as follows:
+   ```console
+   # Shut down the services
+   docker-compose down
+
+   # First list all the images
+   docker images
+
+   # See the image that is used in the broken service, for example the 'monetdb' image. Delete the image
+   docker rmi <IMAGE ID>
+
+   # Asks docker-compose to pull all the images
+   docker-compose pull
+
+   # Sometimes the volume used by the service will get corrupted too. We need to delete the volume.
+   docker volume ls
+
+   # Let say the broken volume is 'bio_db_data' as that volume is used by the monetdb-based service.
+   docker volume rm bio_db_data
+
+   # Restart the service again.
+   docker-compose up -d
+   ```
